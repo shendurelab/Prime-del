@@ -1,0 +1,65 @@
+---
+permalink: /docs/
+---
+<!DOCTYPE html>
+<html lang= "{{ page.lang | default: site.lang | default: "en" }}">
+
+  {% include head.html %}
+
+  <!-- See here for how to use the TOC control:
+  https://afeld.github.io/bootstrap-toc/ -->
+  <body  data-spy= "scroll" data-target= "#toc">
+    {% include header.html %}
+    <div class= "container">
+      <div class= "row">
+        <!-- sidebar, which will move to the top on a small screen -->
+        <div class= "col-sm-4 sidenav">
+          <nav id= "toc" data-spy= "affix" data-toggle= "toc"></nav>
+        </div>
+        <!-- main content area -->
+        <div class= "col-sm-8">
+          <h2>Introduction</h2>
+          <p></p>
+          <p></p>
+
+          <h2>Using </h2>
+          <h3></h3>
+          <p> <a href="website here">webtool</a> </p>
+          
+          <h3></h3>
+          <p>  has been wrapped as a <code>python</code> package. It includes the functions to parse input sequence </p>
+          <div class= "panel panel-info">
+            <div class= "panel-heading">
+              <h3 class= "panel-title" data-toc-skip>Requirements</h3>
+            </div>
+            <div class= "panel-body">
+              <p>Compatible with both <code>Python2.7</code> and <code>Python3.5</code> or higher.</p>
+              <p>Requires <code></code>,<code>numpy</code> and <code></code></p>
+            </div>
+          </div>
+          <p>In terminal, type:</p>
+          <figure class="highlight">
+            <pre><code class="language-bash" data-lang="bash">git clone https://github.com/shendurelab/***.git 
+cd 
+python setup.py install</code></pre>
+          </figure>
+          <p> <code>Lindel_prediction.py</code>. </p>
+          <figure class="highlight">
+            <pre><code class="language-bash" data-lang="bash">python prime_del_gen.py TAACGTTATCAACGCCTATATTAAAGCGACCGTCGGTTGAACTGCGTGGATCAATGCGTC test_seq</code></pre>
+          </figure>
+          <p></p>
+</div>
+</div>
+</div>
+
+<br>
+<br>
+<br>
+<br>
+
+{% include footer.html %}
+
+</body>
+
+</html>
+
