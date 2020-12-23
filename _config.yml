@@ -13,12 +13,12 @@
 # you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
-title: Lindel
+title: Prime-del
 email: wchen108@uw.edu
 description: > # this means to ignore newlines until "baseurl:"
-  Lindel, a Logistic regression model for indel prediction.
-baseurl: "/Lindel"
-url: "" #http://krishna.gs.washington.edu/content/members/ajh24/mouse_atlas_website" # the base hostname & protocol for your site, e.g. http://example.com
+  Prime-del, design paired pegRNA for precision genome deletion.
+baseurl: "/Prime-del"
+url: "" 
 
 # Build settings
 sass:
@@ -26,11 +26,6 @@ sass:
   # default to _sass
   sass_dir: node_modules/bootstrap-sass/assets/stylesheets
 
-  # style : nested (default), compact, compressed, expanded
-  #         :nested, :compact, :compressed, :expanded also works
-  # see http://sass-lang.com/documentation/file.SASS_REFERENCE.html#output_style
-  # on a typical twitter bootstrap stats are :
-  # nested 138,7kB, compact 129,1kB, expanded 135,9 kB, compressed 122,4 kB
 style: compressed
 markdown: kramdown
 

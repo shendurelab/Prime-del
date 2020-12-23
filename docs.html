@@ -19,8 +19,8 @@ permalink: /docs/
         <!-- main content area -->
         <div class= "col-sm-8">
           <h2>Introduction</h2>
-          <p></p>
-          <p></p>
+          <p>Prime-el is</p>
+          <p>In this manual, we are going to introduce how Prime-del works and how to use it.</p>
 
           <h2>Using </h2>
           <h3></h3>
@@ -39,13 +39,13 @@ permalink: /docs/
           </div>
           <p>In terminal, type:</p>
           <figure class="highlight">
-            <pre><code class="language-bash" data-lang="bash">git clone https://github.com/shendurelab/***.git 
-cd 
-python setup.py install</code></pre>
+            <pre><code class="language-bash" data-lang="bash">git clone https://github.com/shendurelab/Prime-del.git
+cd Prime-del
+pip install primedel-1.0-py2.py3-none-any.whl </code></pre>
           </figure>
-          <p> <code>Lindel_prediction.py</code>. </p>
+          <p>We provide a simple test python code <code>gen_pegs.py</code> for you to test your target region. It takes a FASTA file and a few parameters as input, and outputs the a file with pegRNA pairs match the design paramters.</p>
           <figure class="highlight">
-            <pre><code class="language-bash" data-lang="bash">python prime_del_gen.py TAACGTTATCAACGCCTATATTAAAGCGACCGTCGGTTGAACTGCGTGGATCAATGCGTC test_seq</code></pre>
+            <pre><code class="language-bash" data-lang="bash">python gen_pegs.py -i examples/eNMU.fasta -f examples/eNMU-flashfry.output.scored -x 500 1000 -p </code></pre>
           </figure>
           <p></p>
 </div>
