@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="primedel",
-    version="1.0",
+    version="1.1",
     author="Wei Chen",
     author_email="wchen108@uw.edu",
     description="A package for primedel",
