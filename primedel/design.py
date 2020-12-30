@@ -1,5 +1,6 @@
 import numpy as np
 import pandas as pd
+import regex as re
 
 def reverse_complement(seq):
     """This function returns the reverse_complement sequence of the input sequence
@@ -117,16 +118,16 @@ def peg_design_by_start_end(fwd,rev,seq,pos_range,homology_length,p=False):
         for b in rev:
             if p:
                 if a[1] in range(start,start+100) and b[1] in range(end-100,end):
-                    pairs.append(gen_pegpair(a,b,seq,homlen,p=True,nick_start=start,nick_end=end))
+                    pairs.append(gen_pegpair(a,b,seq,homology_length,p=True,nick_start=start,nick_end=end))
             else:
                 if a[1] in range(start-50,start+50) and b[1] in range(end-50,end+50):
-                    pairs.append(gen_pegpair(a,b,homology_length,seq))
+                    pairs.append(gen_pegpair(a,b,seq,homology_length,p=False,nick_start=start,nick_end=end))
     if not pairs and not p:
         print ('Cannot find peg pairs match both window above, try to return pairs match either')
         for a in fwd:
             for b in rev:
                 if a[1] in range(start-50,start+50) and b[1] > a[1]+20:
-                    pairs.append(gen_pegpair(a,b,seq)) 
+                    pairs.append(gen_pegpair(a,b,seq,homology_length)) 
                 elif b[1] in range(end-50,end+50) and a[1] < b[1] -20:
-                    pairs.append(gen_pegpair(a,b,homology_length,seq))
+                    pairs.append(gen_pegpair(a,b,seq,homology_length))
     return np.array(pairs)

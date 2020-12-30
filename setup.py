@@ -14,7 +14,7 @@ setuptools.setup(
     url="https://github.com/shendurelab/Prime-del/main/",
     packages=['primedel'],
     package_data={'primedel': ['indel_ratio.npz']},
-    install_requires=['numpy','pandas'],
+    install_requires=['numpy','pandas','regex','xlrd'],
     classifiers=[
         "Programming Language :: Python :: 3",
         "License :: OSI Approved :: MIT License",
