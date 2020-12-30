@@ -89,7 +89,7 @@ def gen_pegpair(g1,g2,seq,len_homo,p=False,nick_start=None,nick_end=None):
     homology2 = seq[g1[1]-(len_homo):g1[1]]
     pbs1,pbs2 = reverse_complement(g1[0][17-g1[2]:17]), reverse_complement(g2[0][17-g2[2]:17])
     note = 'PolyT in homology, pass' if ('TTTT' in homology1) or ('TTTT' in homology2) else ''
-    note += 'GC rich in homology,pass' if (homology1[0:5].count('C')+homology1[0:5].count('G')>=4) or (homology2[0:5].count('C')+homology2[0:5].count('G')>=4)
+    note += 'GC rich in homology,pass' if (homology1[0:5].count('C')+homology1[0:5].count('G')>=4) or (homology2[0:5].count('C')+homology2[0:5].count('G')>=4) else ""
     if p:
         ins1,ins2 = reverse_complement(seq[g1[1]:nick_start]), seq[nick_end:g2[1]]
         note += 'PolyT in peg_insertion, pass' if ('TTTT' in ins1) or ('TTTT' in ins2) else ''
