@@ -12,6 +12,50 @@ modified: 2020-09-04
 
 
   <div class="container fifty" style="max-width: 1000px">
+  	  <div class= "container">
+      <div class= "row">
+        <!-- sidebar, which will move to the top on a small screen -->
+        <div class= "col-sm-4 sidenav">
+          <nav id= "toc" data-spy= "affix" data-toggle= "toc"></nav>
+        </div>
+        <!-- main content area -->
+        <div class= "col-sm-8">
+          <h2>Introduction</h2>
+          <p>PRIME-Del is a precision genome deletion method based on prime editing. To facilitate prime editing gRNA (pegRNA) design used in PRIME-Del, we developed the Python-based script to generate pegRNA sequences. In this manual, we are going to introduce how to use the tool for paired pegRNA design.</p>
+          <p> PRIME-Del takes a FASTA-formatted sequence file as the input, identifies all possible PAM sequences within the provided region, and initially generates all potential paired pegRNA sequences to program deletions. The software can also optionally take as input scored gRNA files generated using Flashfry, CRISPOR or GPP sgRNA designer; this is highly recommended to identify effective CRISPR/Cas9 spacers. For FlashFry and CRISPOR, gRNA spacers with MIT specificity scores28 below 50 are filtered out as recommended by CRISPOR. From initially generated pegRNA pairs, the software selects relevant ones based on additional user-provided design parameters. For example, the user can define the deletion size range. The user can also define the start and end position of desired deletion, and the software will filter to pegRNA pairs present windows centered at those coordinates. pegRNAs for deletions whose junctions do not fall at PAM sites can be designed using the option ‘--precise’ (-p), which adds insertion sequences to both pegRNAs to facilitate the desired edit. </p>
+
+          <p>The PRIME-Del design software also enables additional design constraints to be specified. The pegRNA RT-template length (also known as the homology arm) is set to 30-bp by default, unless specified otherwise by the user. The pegRNA PBS length is set to 13-bp from the PE2 nick-site by default, unless specified otherwise by the user. The nick position relative to the PAM sequence is predicted using previously identified parameters (<a href="https://lindel.gs.washington.edu/Lindel/">Lindel</a>), and RT-template length is adjusted accordingly if the predicted likelihood of generating a nick at a non-canonical position is greater than 25%. PegRNA sequences that include RNA polymerase III terminator sequences (more than four consecutive T’s) are filtered out. The software generates warning messages if more than 4 out of 5 bp in either 3’-DNA-flap are either G or C. 
+          </p>
+          <h2>Using PRIME-Del</h2>
+          <h3>Webtool</h3>
+          <p> We developted a <a href="https://primedel.uc.r.appspot.com/">webtool</a> for quick design. It takes a sequence and a few paramaters as input. it will design all possible paired pegRNAs match the criteria and create a txt file for download. We recommend the input target sequence is 2x longer than the desired deletion size. </p>
+          
+          <h3>Install local PRIME-Del from Github</h3>
+          <p> PRIME-Del has been wrapped as a <code>python</code> package. Code is available at <a href="https://github.com/shendurelab/Prime-del">Github</a> </p>
+          <div class= "panel panel-info">
+            <div class= "panel-heading">
+              <h3 class= "panel-title" data-toc-skip>Requirements</h3>
+            </div>
+            <div class= "panel-body">
+              <p>Compatible with <code>Python3.5</code> or higher, should work with <code>Python2.7</code> (not tested).</p>
+              <p>Requires <code>pandas</code>,<code>numpy</code>, <code>regex</code> and <code>xlrd</code></p>
+            </div>
+          </div>
+          <p>In terminal, type:</p>
+          <figure class="highlight">
+            <pre><code class="language-bash" data-lang="bash">git clone https://github.com/shendurelab/Prime-del.git
+cd Prime-del
+pip install primedel-1.1-py2.py3-none-any.whl </code></pre>
+          </figure>
+          <p>We provide a simple test python code <code>gen_pegs.py</code> for you to test your target region. It takes a FASTA file and a few parameters as input, and outputs the a file with pegRNA pairs match the design paramters.</p>
+          <figure class="highlight">
+            <pre><code class="language-bash" data-lang="bash">python gen_pegs.py -i examples/eNMU.fasta -f examples/eNMU-flashfry.output.scored -x 500 1000 -p </code></pre>
+          </figure>
+          <p></p>
+</div>
+</div>
+</div>
+
     <div class="fixOverlayDiv">
         <h1 align = "left">Prime-del</h1>
         <p> </p>
