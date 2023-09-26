@@ -22,7 +22,7 @@ def read_fasta(filename):
 
 def gen_guides(seq):
     fwd = [(seq[m.start():m.start()+20],m.start()+17,'FWD',0) for m in re.finditer(r"(?=[AGCT]{21}GG)",seq,overlapped=True)]
-    rev = [(seq[m.start()+3:m.start()+23],m.start()+6,'REV',0) for m in re.finditer("CC[AGCT]{21}",seq,overlapped=True)]
+    rev = [(reverse_complement(seq[m.start()+3:m.start()+23]),m.start()+6,'REV',0) for m in re.finditer("CC[AGCT]{21}",seq,overlapped=True)]
     return (fwd+rev)
 
 def read_gpp_designer(designer_output):
@@ -87,7 +87,7 @@ def gen_pegpair(g1,g2,seq,len_homo,p=False,nick_start=None,nick_end=None):
     "g1 on fwd, g2 on rev. Assuming g2 returned from Flashfry and others is RC to seq"
     homology1 = reverse_complement(seq[g2[1]:g2[1]+len_homo])
     homology2 = seq[g1[1]-(len_homo):g1[1]]
-    pbs1,pbs2 = reverse_complement(g1[0][17-g1[2]:17]), reverse_complement(g2[0][17-g2[2]:17])
+    pbs1,pbs2 = reverse_complement(g1[0][17-13:17]), reverse_complement(g2[0][17-13:17]) # PBS length 13bp
     note = 'PolyT in homology, pass' if ('TTTT' in homology1) or ('TTTT' in homology2) else ''
     note += 'GC rich in homology,pass' if (homology1[0:5].count('C')+homology1[0:5].count('G')>=4) or (homology2[0:5].count('C')+homology2[0:5].count('G')>=4) else ""
     if p:
@@ -118,7 +118,7 @@ def peg_design_by_start_end(fwd,rev,seq,pos_range,homology_length,p=False):
     for a in fwd:
         for b in rev:
             if p:
-                if a[1] in range(start,start+50) and b[1] in range(end-50,end):
+                if a[1] in range(start-20,start+3) and b[1] in range(end-20,end+3):
                     pairs.append(gen_pegpair(a,b,seq,homology_length,p=True,nick_start=start,nick_end=end))
             else:
                 if a[1] in range(start-50,start+50) and b[1] in range(end-50,end+50):
