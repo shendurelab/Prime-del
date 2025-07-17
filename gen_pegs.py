@@ -9,7 +9,7 @@ Input:
 Output: designed txt file
 Useage: 
 """
-import os,sys,argparse
+import os,argparse
 import numpy as np
 import primedel.design as pde
 
