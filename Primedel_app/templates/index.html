@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html  lang="en">
+{% include 'head.html' %}
+
+<body>
+{% include 'header.html' %}
+<div class="content">
+    <div class="container main-block">
+      <div class='row'>
+        <div class="content">
+          <form action="/" enctype=multipart/form-data method=post>
+            <label for="sequence">Target DNA sequence</label> <br>
+            <textarea id="sequence" name="sequence" cols="60" rows="5" placeholder="Target sequence for deletion, recommended length 1-3kb" type="text" value=""></textarea>
+            <br>
+            <label> Required inputs (a OR b): </label> <br>
+            <b>a.</b> Deletion by size (range): &nbsp;
+            <input name="size_range" size="10" type="text" value="100 300">
+            <br>
+            <b>b.</b> Deletion by location (start/end side 0-based): &nbsp;
+            <input name="pos_range" size="10" type="text" placeholder="300 500">
+            <br>
+            &nbsp;&nbsp;&nbsp;&nbsp; Exact deletion?  &nbsp;
+            <input name="precise" type="radio" value="True"> Yes&nbsp;
+            <input name="precise" type="radio" checked value=""> No
+
+            <p></p>
+            <label> Other options: </label> <br>
+            Pre-designed guides from <a href="https://github.com/mckennalab/FlashFry"> Flashfry </a> or <a href="http://crispor.tefor.net/" > CRISPOR </a> or <a href="https://portals.broadinstitute.org/gpp/public/analysis-tools/sgrna-design"> GPP sgRNA designer </a> <b>(Highly recommened) </b>
+            <input name="scored_file" type="file" > 
+            
+            Off-target score threshold: &nbsp;
+            <input name="threshold" size="2" type="text" value="50">&nbsp;
+            Homology length: &nbsp;
+            <input name="homology_len" size="2" type="text" value="30">
+            <br>
+            <input type="submit" value="Submit">
+            <input type="button" value="Example" id="example">
+            <button type="button" hidden="True" id="download-report">Download</button>
+          </form>
+        </div>
+      </div>
+    </div>
+</div>
+
+ 
+
+    <script type="text/javascript">
+        $(document).ready(function(){
+  $("#example").click(function(){
+      $('#sequence').html('TTTTGGACCCCTAGGTCATCCTAGACATTAAAGAGGGCCACACCCCCCTGGCAATGAAATGGGACAAAATAAAAATTTGGCCATCAATACTGCCTCTGGGAAATCTCAGGCAAAAGGAAGAAAATGAGAAATAGAAATGAAATCCTAAGCCCACCAAGCAACAGAACAGACCTCTTCTTTGCCAAGGGACCCCAGAGAAACTCAAAAACTGAGTTCCCAGCCATGACGGGATGGGAGGTTGGAGAAACCTCATTATAACCCCTCCCTCACCTTTTCCTAAGGGTTAAACAGAAACCAGCCCTTTGGAAAGACTCACTCCACCCCTAGTATCAACCACCTGATGCGACCTCTCCCTTCTGTGGTTTCTACAAAATAACCGGCCAGCATTCCTTCCTGATAAGAGACCATGGAGGATGCGCAGTAAGGGTTTTCATGTCCTCTGCTTCAACTTTTGACCTCAGAGGGCTGAAAACTCCTCCCTGGGATCATGCTAACTCCACTATTTTTTGAACATGGTACCCATGAAGGGGCATGAAGTTTACTGGGGCATGTGCATATTTCTCCTTTCATAAATATTCATGACTCCTGCTATAGTTTATTGAATATGTATGTTTCGCCACCCCTTTCAGCATAAATTCCTGTTCCCTTTGCTCCTCCCTCAAAGAGCCTGTTTCTAGCTTGTCAGAATGGCCACCCTGTAAGATGCAACCTTATATGAGAAATAAAGCTCCGCTTTCCAAACGAAATAGAGCTACATATTAATCTTAATCTACTTGACAAGTGGAAAATAAAATAGAACAAATAAAAACACAACTCAACTCAACTCTTCTGCCTGAAAATACTGAATGTTCAGGTTGACAGAAATCTAAAAAATGGTGTTTTCCATGTTTATGCTGGTGTAGATCCTATGGAGATGAGATTAGCTGATTTAGGGCTTGTAAAGCTAAGAAATACAGGGAGAAGTTCATTCTGTTTCTGGGAATTCTGATCCTAGATACTCTTCTTAGAAATCATGATAGCTTTCTCTGAAAATGCTTTACTTTGAATCAGTTGCATTCAGGAAAATAGATAATTCTAGCAGAAAAAGGGTAGGATGGCTGTGAATTCATAAGGGAATGGTCACTGACTAAGCATCTGGTACCTCCCAAGCTCCATGCTCAGTGCTTTGTGCATACTCTCTCTGCTGAGGTCCAATGGCACCTGGCATATCAGAAAACTGAAGCTCTGGGAAGTGATATACTTTGTCCCAGGTCACTGAGTCACAGAGCCAGGACTCTGACCTAGGTCAGTCTGACTCCAGAGACAAAGTTATTTTCCCAACATCCAGTTACCAACCCAACTCAATCAAAGGCTATTGAGCACTTGTGCCAGACACTGTTCTAGAACTGGGATGGCAGTGATCACAGACAAAATCCCTGCCTTTGAGG');
+  });
+});
+    </script>
+{% include 'footer.html' %}
+</body>
+</html>
